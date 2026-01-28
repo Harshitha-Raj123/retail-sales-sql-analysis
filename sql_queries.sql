@@ -26,6 +26,16 @@ FROM data_sample
 GROUP BY Description
 ORDER BY product_revenue DESC
 LIMIT 10;
+-- 5. Average order value
+SELECT 
+    AVG(order_total) AS average_order_value
+FROM (
+    SELECT 
+        InvoiceNo,
+        SUM(Quantity * UnitPrice) AS order_total
+    FROM data_sample
+    GROUP BY InvoiceNo
+) orders;
 
 
 
