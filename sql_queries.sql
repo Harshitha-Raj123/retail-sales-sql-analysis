@@ -10,4 +10,13 @@ SELECT
 FROM data_sample
 GROUP BY Country
 ORDER BY total_revenue DESC;
+-- 3. Monthly sales trend
+SELECT 
+    YEAR(InvoiceDate) AS year,
+    MONTH(InvoiceDate) AS month,
+    SUM(Quantity * UnitPrice) AS monthly_revenue
+FROM data_sample
+GROUP BY YEAR(InvoiceDate), MONTH(InvoiceDate)
+ORDER BY year, month;
+
 
