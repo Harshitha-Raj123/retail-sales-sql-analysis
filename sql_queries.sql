@@ -18,5 +18,14 @@ SELECT
 FROM data_sample
 GROUP BY YEAR(InvoiceDate), MONTH(InvoiceDate)
 ORDER BY year, month;
+-- 4. Top 10 products by revenue
+SELECT 
+    Description,
+    SUM(Quantity * UnitPrice) AS product_revenue
+FROM data_sample
+GROUP BY Description
+ORDER BY product_revenue DESC
+LIMIT 10;
+
 
 
